@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = So 26 Okt 2014 15:47:41 CET
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = Mo 27 Okt 2014 21:42:51 CET
 
 BeginCmp
 TimeStamp = /54499AE8;
@@ -80,21 +80,21 @@ EndCmp
 BeginCmp
 TimeStamp = /54499BE5/544FDE84;
 Reference = J1;
-ValeurCmp = RJ45;
+ValeurCmp = RJDMXin;
 IdModule  = Connect:RJ45_8;
 EndCmp
 
 BeginCmp
 TimeStamp = /54499BE5/544FE7FB;
 Reference = J2;
-ValeurCmp = RJ45;
+ValeurCmp = RJDMXout;
 IdModule  = Connect:RJ45_8;
 EndCmp
 
 BeginCmp
 TimeStamp = /544999E0;
 Reference = K1;
-ValeurCmp = CONN_3;
+ValeurCmp = IR_RCV;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
 EndCmp
 
@@ -115,7 +115,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54499BE5/54499C1C;
 Reference = P1;
-ValeurCmp = CONN_2;
+ValeurCmp = PWR_IN;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
 EndCmp
 
@@ -123,7 +123,7 @@ BeginCmp
 TimeStamp = /54499BE5/5449E0A4;
 Reference = P2;
 ValeurCmp = ISP;
-IdModule  = Pin_Headers:Pin_Header_Straight_2x05;
+IdModule  = 2x5smd:Pin_HeadersPin_Header_SMD_2x5;
 EndCmp
 
 BeginCmp
@@ -208,6 +208,20 @@ TimeStamp = /54499BE5/544D520E;
 Reference = P14;
 ValeurCmp = CONN_01X02;
 IdModule  = Pin_Headers:Pin_Header_Straight_1x02;
+EndCmp
+
+BeginCmp
+TimeStamp = /54499BE5/544EE0CC;
+Reference = P15;
+ValeurCmp = CONN_01X01;
+IdModule  = Socket_Strips:Socket_Strip_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /54499BE5/544EE148;
+Reference = P16;
+ValeurCmp = CONN_01X01;
+IdModule  = Socket_Strips:Socket_Strip_Straight_1x01;
 EndCmp
 
 BeginCmp

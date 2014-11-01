@@ -1,11 +1,6 @@
-update=So 26 Okt 2014 21:19:05 CET
+update=Mo 27 Okt 2014 18:31:17 CET
 version=1
 last_client=kicad
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [general]
 version=1
 [pcbnew]
@@ -67,3 +62,8 @@ LibName32=dips-s
 LibName33=irf-2
 LibName34=eigene/conn_17x2
 LibName35=libs/7805_f
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
