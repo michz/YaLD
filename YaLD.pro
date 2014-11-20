@@ -1,8 +1,6 @@
-update=Mo 27 Okt 2014 18:31:17 CET
+update=Do 20 Nov 2014 16:31:46 CET
 version=1
 last_client=kicad
-[general]
-version=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -67,3 +65,5 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
+[general]
+version=1
