@@ -149,9 +149,9 @@ F 3 "" H 2200 4350 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 2050 3750 2    51   Input ~ 0
-DMXplus
-Text GLabel 2050 3850 2    51   Input ~ 0
 DMXminus
+Text GLabel 2050 3850 2    51   Input ~ 0
+DMXplus
 $Comp
 L VCC #PWR028
 U 1 1 5449B31E
@@ -556,52 +556,6 @@ F 3 "" H 9900 4700 60  0000 C CNN
 	1    9900 4700
 	1    0    0    -1  
 $EndComp
-$Comp
-L CONN_01X01 P15
-U 1 1 544EE0CC
-P 5200 5300
-F 0 "P15" H 5200 5400 50  0000 C CNN
-F 1 "CONN_01X01" V 5300 5300 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x01" H 5200 5300 60  0001 C CNN
-F 3 "" H 5200 5300 60  0000 C CNN
-	1    5200 5300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L CONN_01X01 P16
-U 1 1 544EE148
-P 6050 5300
-F 0 "P16" H 6050 5400 50  0000 C CNN
-F 1 "CONN_01X01" V 6150 5300 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x01" H 6050 5300 60  0001 C CNN
-F 3 "" H 6050 5300 60  0000 C CNN
-	1    6050 5300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L GND #PWR036
-U 1 1 544EE424
-P 5200 5500
-F 0 "#PWR036" H 5200 5500 30  0001 C CNN
-F 1 "GND" H 5200 5430 30  0001 C CNN
-F 2 "" H 5200 5500 60  0000 C CNN
-F 3 "" H 5200 5500 60  0000 C CNN
-	1    5200 5500
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR037
-U 1 1 544EE44E
-P 6050 5500
-F 0 "#PWR037" H 6050 5500 30  0001 C CNN
-F 1 "GND" H 6050 5430 30  0001 C CNN
-F 2 "" H 6050 5500 60  0000 C CNN
-F 3 "" H 6050 5500 60  0000 C CNN
-	1    6050 5500
-	1    0    0    -1  
-$EndComp
-Text Notes 4400 5000 0    60   ~ 0
-GND Bridge for unroutable path (sorry... please FIXME!)
 Connection ~ 1550 3850
 Wire Wire Line
 	1550 3850 1550 4450

@@ -386,9 +386,9 @@ F0 "YalD_Connectors" 50
 F1 "YalD_Connectors.sch" 50
 $EndSheet
 Text GLabel 3050 7200 2    60   Input ~ 0
-DMXminus
-Text GLabel 3050 7400 2    60   Input ~ 0
 DMXplus
+Text GLabel 3050 7400 2    60   Input ~ 0
+DMXminus
 $Comp
 L PCA9685 IC2
 U 1 1 54497EA2
