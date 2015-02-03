@@ -29,10 +29,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:pca9685
-LIBS:dips-s
-LIBS:irf-2
-LIBS:conn_17x2
 LIBS:7805_f
 LIBS:YaLD-cache
 EELAYER 25 0
@@ -527,11 +523,11 @@ F 3 "" H 3450 5600 60  0001 C CNN
 	1    3450 5600
 	1    0    0    -1  
 $EndComp
-Text GLabel 4500 3150 2    31   Input ~ 0
+Text GLabel 4500 3150 2    43   Input ~ 0
 MOSI
-Text GLabel 4500 3250 2    31   Input ~ 0
+Text GLabel 4500 3250 2    43   Input ~ 0
 MISO
-Text GLabel 4500 3350 2    31   Input ~ 0
+Text GLabel 4500 3350 2    43   Input ~ 0
 SCK
 Text GLabel 4450 4650 2    43   Input ~ 0
 INT0
@@ -826,7 +822,6 @@ Wire Wire Line
 Text GLabel 2450 1750 0    43   Input ~ 0
 RESET
 NoConn ~ 4450 3750
-NoConn ~ 4450 3850
 NoConn ~ 4450 3950
 NoConn ~ 4450 4050
 NoConn ~ 4450 4150
@@ -892,4 +887,7 @@ F 3 "" H 4650 5000 60  0000 C CNN
 	1    4650 5000
 	1    0    0    -1  
 $EndComp
+NoConn ~ 4450 3050
+Text GLabel 4450 3850 2    43   Input ~ 0
+DEBUG_TXD
 $EndSCHEMATC
