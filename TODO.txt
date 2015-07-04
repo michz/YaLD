@@ -1,0 +1,1 @@
+PCB: Ausgänge beschriften (VCC, PWM0, PWM1, PWM2, ...)
