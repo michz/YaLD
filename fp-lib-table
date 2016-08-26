@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name 2x5smd)(type KiCad)(uri ${KIPRJMOD}/libs.pretty)(options "")(descr ""))
+  (lib (name CONN_1_4_Pitch_3_5)(type KiCad)(uri "$(KIPRJMOD)/CONN_1_4_Pitch_3_5.pretty")(options "")(descr ""))
 )
