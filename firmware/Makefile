@@ -11,7 +11,7 @@ endif
 
 
 #
-# WinAVR makefile written by Eric B. Weddington, Jörg Wunsch, et al.
+# WinAVR makefile written by Eric B. Weddington, Jï¿½rg Wunsch, et al.
 # Released to the Public Domain
 # Please read the make user manual!
 #
@@ -120,6 +120,7 @@ CFLAGS = -g$(DEBUG)
 CFLAGS += $(CDEFS) $(CINCS)
 CFLAGS += -O$(OPT)
 CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+CFLAGS += -I./include
 #CFLAGS += -Wall -Wstrict-prototypes -pedantic -Wparentheses
 CFLAGS += -Wall -Wparentheses
 CFLAGS += -Wa,-adhlns=$(<:.c=.lst)
@@ -450,4 +451,3 @@ clean_list :
 .PHONY : all begin finish end sizebefore sizeafter gccversion \
 build elf hex eep lss sym coff extcoff \
 clean clean_list program
-
