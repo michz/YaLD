@@ -1,17 +1,5 @@
 # Hey Emacs, this is a -*- makefile -*-
 
-
-ifeq ($(TARGET_OBJECT),storm)
-TARGET_OBJECT_C = TARGET_STORM
-else ifeq ($(TARGET_OBJECT),desk)
-TARGET_OBJECT_C = TARGET_DESK
-else ifeq ($(TARGET_OBJECT),uart_simple)
-TARGET_OBJECT_C = TARGET_UART_SIMPLE
-else
-$(error TARGET_OBJECT was not set \(may be  storm  or  desk  or  simple_uart \) )
-endif
-
-
 #
 # WinAVR makefile written by Eric B. Weddington, J�rg Wunsch, et al.
 # Released to the Public Domain
@@ -61,18 +49,12 @@ F_OSC = 16000000
 FORMAT = ihex
 
 # Target file name (without extension).
-TARGET = dmxled
+TARGET = hwtest
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = $(TARGET).c pwmout.c pca9685.c i2c/twimaster.c suart.c \
-	  led.c
-
-ifeq ($(TARGET_OBJECT),uart_simple)
-SRC += uart_simple.c
-else
-SRC += dmx/C/lib_dmx_in.c irmp/irmp.c ir_mode.c millis/millis/millis.c
-endif
+SRC = $(TARGET).c ../pwmout.c ../pca9685.c ../i2c/twimaster.c ../suart.c \
+	../led.c ../irmp/irmp.c ../millis/millis/millis.c
 
 # List Assembler source files here.
 # Make them always end in a capital .S.  Files ending in a lowercase .s
@@ -127,7 +109,7 @@ CFLAGS = -g$(DEBUG)
 CFLAGS += $(CDEFS) $(CINCS)
 CFLAGS += -O$(OPT)
 CFLAGS += -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-CFLAGS += -I./include -I./irmp -I./FastLED -I./millis/millis
+CFLAGS += -I../include -I../irmp -I../FastLED -I../millis/millis
 #CFLAGS += -Wall -Wstrict-prototypes -pedantic -Wparentheses
 CFLAGS += -Wall -Wparentheses
 CFLAGS += -Wa,-adhlns=$(<:.c=.lst)
@@ -135,7 +117,6 @@ CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 CFLAGS += $(CSTANDARD)
 CFLAGS += -DF_OSC=$(F_OSC)
 #CFLAGS += -DDEBUG
-CFLAGS += -D$(TARGET_OBJECT_C)
 
 
 # Assembler flags.

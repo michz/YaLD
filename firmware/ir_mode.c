@@ -22,7 +22,7 @@ uint8_t ir_raw[32] = { 255, 215, 180, 255, 215, 180, 255, 215, 180,
                                 255, 215, 180, 255, 215, 180, 255, 215, 180,
                                 255, 215, 180, 0, 0 };
 #endif
-#ifdef TARGET_DESK
+#if defined(TARGET_DESK) || defined(TARGET_UART_SIMPLE)
 
 // RGB-Stripe Decke: 7 17 18
 

@@ -34,7 +34,7 @@
 #define BTN_SOUND       0xb
 
 #endif
-#ifdef TARGET_DESK
+#if defined(TARGET_DESK) || defined(TARGET_UART_SIMPLE)
 
 // RGB-Stripe Decke: 7 17 18
 

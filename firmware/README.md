@@ -20,10 +20,35 @@ The I2C (also known as TWI) master library is written by Peter Fleury.
 * Webarchive link: http://web.archive.org/web/20190621180729/http://homepage.hispeed.ch/peterfleury/avr-software.html
 
 
+### FastLED Library for LED driving and effects
+
+From http://fastled.io/ .
+
+
+### millis Library for tracking milliseconds
+
+By Zak Kemble.
+
+Source: https://github.com/zkemble/millis
+
+
+### Software-UART for debugging (RX only)
+
+Source: https://rn-wissen.de/wiki/index.php/Software-UART_mit_avr-gcc
+
+
+### IRMP Multi protocol IR receiver library
+
+Source: https://www.mikrocontroller.net/articles/IRMP
+
+
 License
 -------
 
 * DMX Receiver part: GPL (no version given, see http://web.archive.org/web/20161109091517/http://www.hoelscher-hi.de/hendrik/light/ressources/an012.pdf )
 * I2C library: GPL Version 3
-* Other parts of the firmware: MIT
+* FastLED: MIT
+* millis library: GPL Version 3
+* IRMP: GPL Version 2
+* Other parts of the firmware: GPL Version 3
   (especially all files authored by "Michael Zapf")

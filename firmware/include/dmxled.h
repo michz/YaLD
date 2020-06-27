@@ -4,6 +4,9 @@
 #ifdef TARGET_DESK
 #define DEVICE_ID   (2)
 #endif
+#ifdef TARGET_UART_SIMPLE
+#define DEVICE_ID   (3)
+#endif
 
 #define get_millisecond_timer millis
 

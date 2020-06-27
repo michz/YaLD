@@ -10,18 +10,18 @@
 #include <util/delay.h>
 #include "ir_codes.h"
 #include "led.h"
-#include "irmp/irmp.h"
+#include "irmp.h"
 
 #define RAND16_SEED  1337
-#include "FastLED/led_sysdefs.h"
-#include "FastLED/lib8tion.h"
+#include "led_sysdefs.h"
+#include "lib8tion.h"
 
 #ifdef TARGET_STORM
 #define IR_ADDRESS      (0x0)
-#endif                                                                          
-#ifdef TARGET_DESK
+#endif
+#if defined(TARGET_DESK) || defined(TARGET_UART_SIMPLE)
 #define IR_ADDRESS      (0x14)
-#endif 
+#endif
 
 #define IR_CHANNELS     (32)
 
