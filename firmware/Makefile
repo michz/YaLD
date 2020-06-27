@@ -1,14 +1,12 @@
 # Hey Emacs, this is a -*- makefile -*-
 
 
-ifeq ($(TARGET_OBJECT),storm)
-TARGET_OBJECT_C = TARGET_STORM
-else ifeq ($(TARGET_OBJECT),desk)
-TARGET_OBJECT_C = TARGET_DESK
+ifeq ($(TARGET_OBJECT),dmx)
+TARGET_OBJECT_C = TARGET_DMX
 else ifeq ($(TARGET_OBJECT),uart_simple)
 TARGET_OBJECT_C = TARGET_UART_SIMPLE
 else
-$(error TARGET_OBJECT was not set \(may be  storm  or  desk  or  simple_uart \) )
+$(error TARGET_OBJECT was not set \(may be  dmx  or  uart_simple \) )
 endif
 
 

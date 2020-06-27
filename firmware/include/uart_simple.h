@@ -10,6 +10,7 @@ extern "C" {
 #define UART_SIMPLE_CHANNEL_COUNT 32
 
 #define BAUD 19200UL
+//#define BAUD 38400UL
 
 // Calculations
 #define UBRR_VAL ((F_CPU+BAUD*8)/(BAUD*16)-1)

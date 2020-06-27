@@ -16,12 +16,7 @@
 #include "led_sysdefs.h"
 #include "lib8tion.h"
 
-#ifdef TARGET_STORM
 #define IR_ADDRESS      (0x0)
-#endif
-#if defined(TARGET_DESK) || defined(TARGET_UART_SIMPLE)
-#define IR_ADDRESS      (0x14)
-#endif
 
 #define IR_CHANNELS     (32)
 
