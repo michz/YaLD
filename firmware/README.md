@@ -1,6 +1,15 @@
 YaLD firmware
 =============
 
+
+Simple UART Algorithm
+---------------------
+
+Similar to dmx. but with 8n1 and 19200 baud.
+
+Break (framing error) indicates start of sequence, then 32 bytes of data follow.
+
+
 Attribution
 -----------
 
@@ -40,6 +49,7 @@ Source: https://rn-wissen.de/wiki/index.php/Software-UART_mit_avr-gcc
 ### IRMP Multi protocol IR receiver library
 
 Source: https://www.mikrocontroller.net/articles/IRMP
+
 
 
 License
