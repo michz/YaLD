@@ -1,0 +1,9 @@
+Bill of Materials
+=================
+
+(not marked on board)
+
+
+X1      16MHz
+C3      4,7uF
+C4      330n
