@@ -11,15 +11,16 @@
 
 #define CHANNEL_COUNT 32
 
+
 WebServer server(WEBSERVER_DEFAUL_PORT);
 
 uint8_t data[CHANNEL_COUNT];
 
 
 void setup() {
-    Serial.begin(19200);
+    Serial2.begin(19200, SERIAL_8N1);
+    //Serial2.begin(19200, SERIAL_8N1, 12, 13);
     WiFi.begin(WIFI_SSID, WIFI_KEY);
-
 
     server.on("/healthz", []() {
         server.send(200, "text/plain", "OK");
@@ -37,8 +38,39 @@ void setup() {
 
 }
 
+inline void SendBreak(HardwareSerial s)
+{
+    s.end();
+
+    pinMode(17, OUTPUT);
+    pinMatrixOutAttach(17, 0, false, false);
+    digitalWrite(17, LOW);
+
+    delayMicroseconds(250);
+/*
+    s.begin(300, SERIAL_8N1);       // open 300bps
+    byte x[8];
+    memset(x, 0x00, 8);
+    s.write(x, 8);    // 500ms null(0) send => effect Send BREAK
+    s.end();
+*/
+
+    s.begin(19200, SERIAL_8N1);     // reopen 19200bps
+}
+
 void loop() {
-    // @TODO output repeatedly the current values
+    // @TODO output repeatedly the current values in separate task / core
+    //const uint8_t nullbytes[] = {0, 0, 0, 0, 0, 0, 0, 0};
+
+    // break
+    SendBreak(Serial2);
+
+    Serial2.write(data, CHANNEL_COUNT);
+    Serial2.flush();
+
+    //delay(50);
+
+    //data[2] += 1;
 
     server.handleClient();
 }
@@ -82,7 +114,7 @@ void handlePostData() {
     for (JsonObject::iterator it=object.begin(); it!=object.end(); ++it) {
         uint8_t key = (uint8_t) atoi(it->key().c_str());
         uint8_t value = (uint8_t) it->value().as<int>();
-        data[key] = value;
+        data[key] = (value & 0xFF);
     }
 
     server.send(200, "text/plain", "OK");
