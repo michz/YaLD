@@ -1,5 +1,6 @@
 #include "main.h"
 #include "credentials.h"
+#include "mqtt.h"
 
 #include <Arduino.h>
 #include <WiFi.h>
@@ -7,17 +8,37 @@
 
 #include <ArduinoJson.h>
 
+
+#define MZTX_FIRMWARE_VERSION "1"
 #define WEBSERVER_DEFAUL_PORT 80
 
 #define CHANNEL_COUNT 32
 
-
+WiFiClient espClient;
 WebServer server(WEBSERVER_DEFAUL_PORT);
 
 uint8_t data[CHANNEL_COUNT];
 
+// basically: "yald/123/version"
+char topicVersion[17];
+
+// basically: "yald/123/setAll"
+char topicSetAll[16];
+
+// basically: "yald/123/set"
+char topicSet[13];
+
+// basically: "yald/123/state"
+char topicState[15];
+
 
 void setup() {
+    // init topics
+    snprintf(topicVersion, sizeof(topicVersion), "yald/%s/version", MZTX_DEVICE_ID);
+    snprintf(topicSetAll, sizeof(topicSetAll), "yald/%s/setAll", MZTX_DEVICE_ID);
+    snprintf(topicSet, sizeof(topicSet), "yald/%s/set", MZTX_DEVICE_ID);
+    snprintf(topicState, sizeof(topicState), "yald/%s/state", MZTX_DEVICE_ID);
+
     Serial2.begin(19200, SERIAL_8N1);
     //Serial2.begin(19200, SERIAL_8N1, 12, 13);
     WiFi.begin(WIFI_SSID, WIFI_KEY);
@@ -27,7 +48,7 @@ void setup() {
     });
 
     server.on("/version", []() {
-        server.send(200, "text/plain", "1.0.0");
+        server.send(200, "text/plain", MZTX_FIRMWARE_VERSION);
     });
 
     server.on("/data", HTTP_GET, handleGetData);
@@ -73,6 +94,12 @@ void loop() {
     //data[2] += 1;
 
     server.handleClient();
+
+    if (false == mqttConnected()) {
+        mqttReconnect();
+    }
+
+    mqttLoop();
 }
 
 void handleRootPath() {
@@ -118,4 +145,9 @@ void handlePostData() {
     }
 
     server.send(200, "text/plain", "OK");
+}
+
+void mqttCallback(char* topic, byte* payload, unsigned int length)
+{
+    // @TODO
 }
