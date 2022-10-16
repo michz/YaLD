@@ -83,6 +83,8 @@ void setup() {
         delay(250);
     }
 
+    // Initialize data array (should be done automatically, but for sure...)
+    memset(data, CHANNEL_COUNT, CHANNEL_COUNT * sizeof(uint8_t));
 
     /*
     server.on("/healthz", []() {
