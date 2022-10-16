@@ -2,11 +2,11 @@
 
 
 #define MZTX_FIRMWARE_VERSION "1"
-#define WEBSERVER_DEFAUL_PORT 80
+//#define WEBSERVER_DEFAUL_PORT 80
 
 #define CHANNEL_COUNT 32
 
-#define ENABLE_DEBUG
+//#define ENABLE_DEBUG
 
 #ifdef ENABLE_DEBUG
 
@@ -26,7 +26,7 @@
 
 
 WiFiClient espClient;
-WebServer server(WEBSERVER_DEFAUL_PORT);
+//WebServer server(WEBSERVER_DEFAUL_PORT);
 
 uint8_t data[CHANNEL_COUNT];
 
@@ -107,7 +107,7 @@ void setup() {
     mqttLoop();
     mqttPublish(MQTT_TOPIC_FIRMWARE_VERSION, MZTX_FIRMWARE_VERSION, true);
 
-    server.begin();
+    //server.begin();
 }
 
 inline void SendBreak()
