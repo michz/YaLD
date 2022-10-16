@@ -7,8 +7,11 @@
 
 #include <ArduinoJson.h>
 
+#include "debug.h"
+
 #include "credentials.h"
 #include "mqtt.h"
+#include "updateServer.h"
 
 
 extern WiFiClient espClient;

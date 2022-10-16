@@ -1,32 +1,9 @@
 #include "main.h"
 
-
-#define MZTX_FIRMWARE_VERSION "1"
-//#define WEBSERVER_DEFAUL_PORT 80
-
 #define CHANNEL_COUNT 32
-
-//#define ENABLE_DEBUG
-
-#ifdef ENABLE_DEBUG
-
-#define MZTX_DEBUG_INIT()            Serial.begin(115200)
-#define MZTX_DEBUG_PRINT(msg)        Serial.print(msg)
-#define MZTX_DEBUG_PRINTLN(msg)      Serial.println(msg)
-#define MZTX_DEBUG_FORCEFLUSH()      Serial.flush()
-
-#else
-
-#define MZTX_DEBUG_INIT()
-#define MZTX_DEBUG_PRINT(msg)
-#define MZTX_DEBUG_PRINTLN(msg)
-#define MZTX_DEBUG_FORCEFLUSH()
-
-#endif
 
 
 WiFiClient espClient;
-//WebServer server(WEBSERVER_DEFAUL_PORT);
 
 uint8_t data[CHANNEL_COUNT];
 
@@ -47,12 +24,14 @@ Topics:
 #define MQTT_TOPIC_RGB                      "/rgb/"
 #define MQTT_TOPIC_SET_SUFFIX               "/set"
 #define MQTT_TOPIC_FIRMWARE_VERSION_SUFFIX  "/_firmware/version"
+#define MQTT_TOPIC_MY_IP_SUFFIX             "/_my_ip"
 
 #define MQTT_TOPIC_SET_RGB                  MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_RGB MQTT_TOPIC_WILDCARD_SINGLE MQTT_TOPIC_SET_SUFFIX
 #define MQTT_TOPIC_SET_CHANNEL              MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_CHANNEL MQTT_TOPIC_WILDCARD_SINGLE MQTT_TOPIC_SET_SUFFIX
 #define MQTT_TOPIC_FORMAT_SET_RGB           MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_RGB MQTT_TOPIC_FORMAT_SINGLE MQTT_TOPIC_SET_SUFFIX
 #define MQTT_TOPIC_FORMAT_SET_CHANNEL       MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_CHANNEL MQTT_TOPIC_FORMAT_SINGLE MQTT_TOPIC_SET_SUFFIX
 #define MQTT_TOPIC_FIRMWARE_VERSION         MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_FIRMWARE_VERSION_SUFFIX
+#define MQTT_TOPIC_MY_IP                    MQTT_TOPIC_BASE MZTX_DEVICE_ID MQTT_TOPIC_MY_IP_SUFFIX
 
 void setup() {
     MZTX_DEBUG_INIT();
@@ -100,6 +79,8 @@ void setup() {
     server.on("/", handleRootPath);
     */
 
+   initUpdateServer();
+
     mqttInit();
     mqttReconnect();
 
@@ -108,8 +89,7 @@ void setup() {
 
     mqttLoop();
     mqttPublish(MQTT_TOPIC_FIRMWARE_VERSION, MZTX_FIRMWARE_VERSION, true);
-
-    //server.begin();
+    mqttPublish(MQTT_TOPIC_MY_IP, WiFi.localIP().toString().c_str(), true);
 }
 
 inline void SendBreak()
@@ -202,8 +182,10 @@ void loop() {
     //data[2] += 1;
 
     //server.handleClient();
-
     */
+
+    loopUpdateServer();
+
     if (false == mqttConnected()) {
         mqttReconnect();
     }
